@@ -40,6 +40,7 @@ def create_app():
     db = Database(os.path.join(home_dir, "movies.db"))
     app.config["db"] = db
     return app
+    
     '''
 
     #'C:\\Users\\ugur_\\movies.db'
