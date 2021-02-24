@@ -34,15 +34,17 @@ def create_app():
     path = "\\ege-cloud"
 
     #conn = sqlite3.connect("C:\\users\\guest\\desktop\\example.db")
-    '''
-    home_dir = os.path.expanduser(path)
-    db = Database(os.path.join(home_dir, "movies.sqlite"))
-    print("Database: ", db)
-    app.config["db"] = db
-    '''
 
+    '''
     home_dir = os.path.expanduser("~")
     db = Database(os.path.join(home_dir, "movies.db"))
+    app.config["db"] = db
+    return app
+    '''
+
+    #'C:\\Users\\ugur_\\movies.db'
+    home_dir = os.path.expanduser("~")
+    db = Database("C:\\Users\\ugur_\\movies.db")
     app.config["db"] = db
     return app
 
