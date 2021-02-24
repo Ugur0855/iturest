@@ -36,15 +36,16 @@ def create_app():
     #conn = sqlite3.connect("C:\\users\\guest\\desktop\\example.db")
 
     '''
+    #'C:\\Users\\ugur_\\movies.db'
     home_dir = os.path.expanduser("~")
-    db = Database(os.path.join(home_dir, "movies.db"))
+    db = Database("C:\\Users\\ugur_\\movies.db")
     app.config["db"] = db
-    return app    
+    return app
     '''
 
     #'C:\\Users\\ugur_\\movies.db'
     home_dir = os.path.expanduser("~")
-    db = Database("C:\\Users\\ugur_\\movies.db")
+    db = Database("D:\\Bilgisayar\\iturestapp\\movies.db")
     app.config["db"] = db
     return app
 
