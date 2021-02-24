@@ -5,6 +5,7 @@ ardından settings.py dosyasında giriş bilgileri güncellenmelidir.
 '''
 
 from passlib.hash import pbkdf2_sha256
+
 hashadminsifresi = pbkdf2_sha256.hash("bulut")
 print ("Admin şifresi(bulut): " + hashadminsifresi)
 

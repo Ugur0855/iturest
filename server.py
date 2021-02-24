@@ -26,20 +26,24 @@ def create_app():
     app.add_url_rule("/movies", view_func=views.movies_page, methods=["GET", "POST"])
     app.add_url_rule("/movies/<int:movie_key>", view_func=views.movie_page)
     app.add_url_rule("/movies/<int:movie_key>/edit",view_func=views.movie_edit_page,methods=["GET", "POST"],)
-    app.add_url_rule(
-        "/new-movie", view_func=views.movie_add_page, methods=["GET", "POST"]
-    )
+    app.add_url_rule("/new-movie", view_func=views.movie_add_page, methods=["GET", "POST"])
 
     lm.init_app(app)
     lm.login_view = "login_page"
 
-    path = "\ege-cloud"
+    path = "\\ege-cloud"
 
+    #conn = sqlite3.connect("C:\\users\\guest\\desktop\\example.db")
+    '''
     home_dir = os.path.expanduser(path)
     db = Database(os.path.join(home_dir, "movies.sqlite"))
     print("Database: ", db)
     app.config["db"] = db
+    '''
 
+    home_dir = os.path.expanduser("~")
+    db = Database(os.path.join(home_dir, "movies.db"))
+    app.config["db"] = db
     return app
 
 
