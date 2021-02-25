@@ -15,11 +15,16 @@ def login_page():
             password = form.data["password"]
             if hasher.verify(password, user.password):
                 login_user(user)
-                flash("You have logged in.")
+                flash("Giriş başarılı.")
                 next_page = request.args.get("next", url_for("home_page"))
                 return redirect(next_page)
         flash("Invalid credentials.")
-    return render_template("login.html", form=form)
+    
+    x = datetime.now()
+    date = x.strftime("%x")
+    day_name = x.strftime("%A")
+    time = x.strftime("%X")
+    return render_template("login.html", form=form, date = date, day_name = day_name, time = time)
 
 def logout_page():
     logout_user()
@@ -65,7 +70,7 @@ def movie_add_page():
         movie = Movie(title, year=year)
         db = current_app.config["db"]
         movie_key = db.add_movie(movie)
-        flash("Movie added.")
+        flash("Exam added.")
         return redirect(url_for("movie_page", movie_key=movie_key))
     return render_template("movie_edit.html", form=form)
 
@@ -79,7 +84,7 @@ def movie_edit_page(movie_key):
         year = form.data["year"]
         movie = Movie(title, year=year)
         db.update_movie(movie_key, movie)
-        flash("Movie data updated.")
+        flash("Exam updated.")
         return redirect(url_for("movie_page", movie_key=movie_key))
     form.title.data = movie.title
     form.year.data = movie.year if movie.year else ""
